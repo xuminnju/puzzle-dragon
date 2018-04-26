@@ -1,4 +1,5 @@
 由于本人喜爱玩Gungho旗下的游戏智龙迷城，酷爱智龙迷城的宠物立绘，因此决定从http://puzzledragonx.com/上爬取所有宠物的图片。
 经分析，该网站上宠物图片的url格式为http://puzzledragonx.com/en/img/monster/MONS_XXX.jpg，其中xxx是该宠物的序号。
 因此从http://puzzledragonx.com/en/monsterbook.asp宠物首页中解析出所有宠物的序号，保存到列表中。
-构造函数下载相应序号的宠物图片并保存，采用requests模块发送请求。
+然后下载相应序号的宠物并保存。
+2018//26日总计宠物4352个，图片链接：https://pan.baidu.com/s/1ADNv150_aRPWC5rRl5ijIw 密码：vx0c
