@@ -4,6 +4,7 @@ import requests
 from bs4 import BeautifulSoup
 import re
 import os
+from multiprocessing import Pool
 
 headers = {
     "User-Agent":'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36'
@@ -23,7 +24,7 @@ def get_img(num):
             print('%s号宠物图片已经下载'%num)
             return
         url = 'http://puzzledragonx.com/en/img/monster/MONS_%s.jpg'%num
-        imgbyte = requests.get(uDr//l, headers=headers).content
+        imgbyte = requests.get(url, headers=headers).content
         with open(path,'wb') as fn:
             fn.write(imgbyte)
             print('%s号宠物图片已下载好'%num)
@@ -31,5 +32,8 @@ def get_img(num):
         print('下载失败')
 
 if __name__ == '__main__':
-    for num in numList:
-        get_img(num)
+    #print(numList)
+    pool = Pool(processes=8)
+    pool.map_async(get_img, (num for num in numList))
+    pool.close()
+    pool.join()
